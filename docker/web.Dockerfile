@@ -25,7 +25,7 @@ RUN cp /tmp/go-migrate/migrate /usr/bin/migrate
 
 WORKDIR /clean_web
 
-RUN go mod download
+RUN go mod download -x -json
 
 RUN go get github.com/go-delve/delve/cmd/dlv
 
