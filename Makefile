@@ -1,5 +1,5 @@
 include .env
-MIGRATE=docker-compose exec web migrate -path=migration -database "mysql://${DBUsername}:${DBPassword}@tcp(${DBHost}:${DBPort})/${DBName}" -verbose
+MIGRATE=docker-compose exec web migrate -path=migration -database "postgres://${DBUsername}:${DBPassword}@tcp(${DBHost}:${DBPort})/${DBName}" -verbose
 
 dev:
 		gin appPort ${ServerPort} -i run server.go
