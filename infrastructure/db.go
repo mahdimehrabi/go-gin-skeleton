@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"gorm.io/driver/mysql"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
@@ -42,7 +42,7 @@ func NewDatabase(Zaplogger Logger, env Env) Database {
 		)
 	}
 
-	db, err := gorm.Open(mysql.Open(url), &gorm.Config{Logger: newLogger})
+	db, err := gorm.Open(postgres.Open(url), &gorm.Config{Logger: newLogger})
 	_ = db.Exec("CREATE DATABASE IF NOT EXISTS " + env.DBName + ";")
 	if err != nil {
 		Zaplogger.Zap.Info("Url: ", url)
