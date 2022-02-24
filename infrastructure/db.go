@@ -30,17 +30,9 @@ func NewDatabase(Zaplogger Logger, env Env) Database {
 
 	Zaplogger.Zap.Info(env)
 
-	url := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", env.DBUsername, env.DBPassword, env.DBHost, env.DBPort, env.DBName)
-
-	if env.Environment != "local" {
-		url = fmt.Sprintf(
-			"%s:%s@unix(/cloudsql/%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
-			env.DBUsername,
-			env.DBPassword,
-			env.DBHost,
-			env.DBName,
-		)
-	}
+	url := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Europe/London",
+		env.DBHost, env.DBUsername, env.DBPassword, env.DBName,
+		env.DBPort)
 
 	db, err := gorm.Open(postgres.Open(url), &gorm.Config{Logger: newLogger})
 	_ = db.Exec("CREATE DATABASE IF NOT EXISTS " + env.DBName + ";")

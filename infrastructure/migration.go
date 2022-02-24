@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/golang-migrate/migrate/v4"
-	_ "github.com/golang-migrate/migrate/v4/database/mysql"
+	_ "github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 )
 
@@ -48,7 +48,7 @@ func (m Migrations) Migrate() {
 		)
 	}
 
-	migrations, err := migrate.New("file://migration/", "mysql://"+dsn)
+	migrations, err := migrate.New("file://migration/", "postgres://"+dsn)
 
 	m.logger.Zap.Info("--- Running Migration ---")
 	err = migrations.Steps(1000)
