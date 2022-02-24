@@ -20,9 +20,9 @@ services:
       context: .
       dockerfile: ./docker/db.Dockerfile
     environment:
-      MYSQL_USER: ${DBUsername}
-      MYSQL_PASSWORD: ${DBPassword}
-      MYSQL_DATABASE: ${DBName}
+      DB_USER: ${DBUsername}
+      DB_PASSWORD: ${DBPassword}
+      DB_DATABASE: ${DBName}
     container_name: boilerplate-db
     command:
       [
