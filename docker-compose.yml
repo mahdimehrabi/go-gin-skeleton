@@ -16,29 +16,20 @@ services:
       - database
 
   database:
-    build:
-      context: .
-      dockerfile: ./docker/db.Dockerfile
+    image: postgres:14.1-alpine
     environment:
-      DB_USER: ${DBUsername}
-      DB_PASSWORD: ${DBPassword}
-      DB_DATABASE: ${DBName}
+      POSTGRES_USER: ${DBUsername}
+      POSTGRES_PASSWORD: ${DBPassword}
+      POSTGRES_DATABASE: ${DBName}
     container_name: boilerplate-db
-    command:
-      [
-        "--character-set-server=utf8mb4",
-        "--collation-server=utf8mb4_unicode_ci",
-        "--default-authentication-plugin=mysql_native_password",
-      ]
-    ports:
-      - 33066:3306
     volumes:
-      - boilerplate_db:/var/lib/mysql
-
+      - psql_data:/var/lib/postgresql/data
   adminer:
     image: adminer
     ports:
       - ${AdminerPort}:8080
 
 volumes:
-  boilerplate_db:
+  psql_data:
+    external: true
+    name: psql_data
