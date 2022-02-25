@@ -35,6 +35,7 @@ func NewDatabase(Zaplogger Logger, env Env) Database {
 		env.DBPort)
 
 	db, err := gorm.Open(postgres.Open(url), &gorm.Config{Logger: newLogger})
+	_ = db.Exec("CREATE DATABASE IF NOT EXISTS " + env.DBName + ";")
 	if err != nil {
 		Zaplogger.Zap.Info("Url: ", url)
 		Zaplogger.Zap.Panic(err)
