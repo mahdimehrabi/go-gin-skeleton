@@ -5,7 +5,6 @@ import (
 	"os"
 
 	"github.com/manifoldco/promptui"
-	"google.golang.org/grpc/status"
 )
 
 // Command has a command
