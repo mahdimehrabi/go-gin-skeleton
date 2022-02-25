@@ -24,6 +24,7 @@ func NewApplication(
 	createAdminUser CreateAdminUser,
 	createDummyAdminUser CreateDummyAdminUser,
 	createSeedData CreateSeedData,
+	seeCreateTablesSql SeeCreateTablesSql,
 ) Application {
 	return Application{
 		logger: logger,
@@ -31,6 +32,7 @@ func NewApplication(
 			createAdminUser,
 			createSeedData,
 			createDummyAdminUser,
+			seeCreateTablesSql,
 		},
 	}
 }

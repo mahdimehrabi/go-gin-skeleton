@@ -10,4 +10,5 @@ var Module = fx.Options(
 	fx.Provide(NewCreateDummyAdminUser),
 	fx.Provide(NewCreateSeedData),
 	fx.Provide(NewApplication),
+	fx.Provide(NewSeeCreateTablesSql),
 )
