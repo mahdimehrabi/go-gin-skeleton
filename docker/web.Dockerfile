@@ -27,6 +27,6 @@ WORKDIR /clean_web
 
 RUN go mod download -x -json
 
-RUN go get github.com/go-delve/delve/cmd/dlv
+#RUN go get github.com/go-delve/delve/cmd/dlv
 
 CMD sh /clean_web/docker/run.sh

@@ -3,9 +3,6 @@ module boilerplate-api
 go 1.16
 
 require (
-	cloud.google.com/go/firestore v1.6.0
-	cloud.google.com/go/storage v1.18.1
-	firebase.google.com/go v3.13.0+incompatible
 	github.com/getsentry/sentry-go v0.11.0
 	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-gonic/gin v1.7.4
@@ -18,7 +15,6 @@ require (
 	golang.org/x/oauth2 v0.0.0-20211005180243-6b3c2da341f1
 	golang.org/x/text v0.3.7
 	google.golang.org/api v0.58.0
-	gorm.io/driver/mysql v1.1.2
 	gorm.io/driver/postgres v1.3.1 // indirect
 	gorm.io/gorm v1.23.1
 )
