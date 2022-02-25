@@ -36,16 +36,10 @@ func (m Migrations) Migrate() {
 	DBNAME := m.env.DBName
 	ENVIRONMENT := m.env.Environment
 
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", USER, PASS, HOST, PORT, DBNAME)
+	dsn := fmt.Sprintf("%s:%s@%s:%s/%s", USER, PASS, HOST, PORT, DBNAME)
 
 	if ENVIRONMENT != "local" {
-		dsn = fmt.Sprintf(
-			"%s:%s@unix(/cloudsql/%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
-			USER,
-			PASS,
-			HOST,
-			DBNAME,
-		)
+		dsn = fmt.Sprintf("%s:%s@%s:%s/%s?sslmode=disable", USER, PASS, HOST, PORT, DBNAME)
 	}
 
 	migrations, err := migrate.New("file://migration/", "postgres://"+dsn)
