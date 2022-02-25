@@ -2,8 +2,10 @@ package cli
 
 import (
 	"boilerplate-api/infrastructure"
+	"os"
 
 	"github.com/manifoldco/promptui"
+	"google.golang.org/grpc/status"
 )
 
 // Command has a command
@@ -63,7 +65,7 @@ func (c Application) Start() {
 
 	if result == "EXIT_APPLICATION" {
 		c.logger.Zap.Info("CLI Application Exited")
-		return
+		os.Exit(0)
 	}
 
 	commandMap[result].Run()
