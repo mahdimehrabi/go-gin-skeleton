@@ -15,6 +15,6 @@ require (
 	golang.org/x/oauth2 v0.0.0-20211005180243-6b3c2da341f1
 	golang.org/x/text v0.3.7
 	google.golang.org/api v0.58.0
-	gorm.io/driver/postgres v1.3.1 // indirect
+	gorm.io/driver/postgres v1.3.1
 	gorm.io/gorm v1.23.1
 )
